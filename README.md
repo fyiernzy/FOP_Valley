@@ -8,7 +8,7 @@ This is an extract taken from the Wikipedia. As of your Fundamental of Programmi
 
 ## 1 - Introduction
 
-![Alt text](image-4.png)
+![A Slime](image/slime.png)
 
 In this assignment, your task is to create an interactive fiction game where players can use the Command Line Interface (CLI) to interact with the system and navigate through the story. Your goal is to develop an intriguing narrative where players can acquire and control heroes, similar to the game Genshin Impact, and progress by overcoming challenges. Along the journey, players will receive hints to guide them towards discovering the final truth of the story.
 
@@ -19,7 +19,7 @@ Ensure that your game effectively allows player to manage movement, item collect
 ### 2.1 Map Design (3 marks)
 
 <div style="text-align:center">
-    <img src="image_QnsCD2V9_1696949574751_raw.jpg" alt="Image Description" width="300" height="200">
+    <img src="image/map.jpg" alt="Image Description" width="300" height="200">
 </div>
 
 Certainly, an engaging game necessitates an intriguing map replete with various elements seamlessly integrated into its design. A well-crafted map should be expansive and thoughtfully planned, rendering it even more enjoyable and challenging by establishing connections between diverse locations within the game world.
@@ -320,7 +320,7 @@ The number `+7` should indicate the weapon has been upgraded successfully for 7 
 #### 2.7.3 Blacksmith Shop (3 marks)
 
 <div style="text-align:center">
-    <img src="image-5.png" alt="Image Description" width="400" height="300">
+    <img src="image/blacksmith-shop.png" alt="Blacksmith Shop" width="400" height="300">
 </div>
 
 > A blacksmith is a person who makes and repairs things in iron by hand
@@ -454,6 +454,12 @@ Some of your friends might ask whether they should design a Graphical User Inter
 
 It's perfectly acceptable to harness the capabilities of ChatGPT to assist you while working on your assignments. You may want to explore the use of an embedded database and incorporate SQL syntax in your code to streamline your work. Additionally, always keep modularity in mind and strive to avoid hard-coding. For example, if your project involves extensive dialogues for various conversations, it's advisable to store them in a .txt file rather than embedding them directly in the code. This approach makes modifications and amendments to the text considerably easier.
 
+If you are seeking for the possible input and output, you might watch the following videos on Youtube:
+
+1. [SanctuaryRPG - (Classic Text Adventure Game)](https://www.youtube.com/watch?v=_nuS86ITjIM)
+2. [Open world Ascii based Python RPG | Python Curses](https://www.youtube.com/watch?v=DX1a8Uz12Xc)
+3. [Python Text RPG Showcase | OldenRPG](https://www.youtube.com/watch?v=rz_2ml0AQ4k)
+
 ## 4 - Reminders
 
 ### 4.1 Modularity
@@ -499,7 +505,7 @@ By refactoring the code in this manner, we indeed improve scalability and mainta
 #### 4.1.2 Single Responsibility Principle (SRP)
 
 <div style="text-align:center">
-    <img src="image.png" alt="Image Description" width="400" height="300">
+    <img src="image/srp.png" alt="Single Responsibility Principle" width="400" height="250">
 </div>
 
 The Single Responsibility Principle is a fundamental programming principle that states that *A class should have only one reason to change.* It emphasizes that each class should be responsible for a single behavior or functionality.
@@ -521,7 +527,7 @@ It's quite common for newcomers who have no prior experience in programming to c
 Therefore, it's advisable to refrain from using platforms like WhatsApp or Telegram for exchanging .zip files. Instead, consider using version control systems like Git and platforms like GitHub or Bitbucket, which are designed for efficient and collaborative code management.
 
 <div style="text-align:center">
-    <img src="image-1.png" alt="Image Description" width="400" height="300">
+    <img src="image/git-and-github.png" alt="Image Description" width="400" height="220">
 </div>
 
 Among the various version control systems (VCS) available, Git stands out as one of the best options. Although some people may mistakenly believe that Git and GitHub are synonymous, they are, in fact, distinct entities.
@@ -592,7 +598,7 @@ It is important to understand that commit messages should accurately reflect the
 ### 4.3 Writing readable code
 
 <div style="text-align:center">
-    <img src="image-6.png" alt="Image Description" width="300" height="300">
+    <img src="image/programmer-meme.png" alt="Image Description" width="300" height="300">
 </div>
 
 Code is read more often than it is written. Avoid trying to be overly clever. While it may seem impressive to code swiftly with three-character variables or craft complex one-liners with numerous loops and clauses, both your present and future selves, along with your teammates, will benefit from the improved readability that comes from taking the time to give your methods and variables meaningful names, maintain proper spacing, and add meaningful comments. Always approach coding as if you'll need to explain it a week later, because the reality is, you will, even if it's just to yourself.
