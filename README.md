@@ -1,6 +1,6 @@
 # FOP Valley
 
-You might read the assignment question in 
+You might read the assignment question on [GitHub](https://github.com/fyiernzy/FOP_Valley/tree/main)
 
 > Text adventures (sometimes synonymously referred to as interactive fiction) are text-based games wherein worlds are described in the narrative and the player submits typically simple commands to interact with the worlds.
 
@@ -18,9 +18,7 @@ Ensure that your game effectively allows player to manage movement, item collect
 
 ### 2.1 Map Design (3 marks)
 
-<div style="text-align:center">
-    <img src="image/map.jpg" alt="Image Description" width="300" height="200">
-</div>
+![Map](image/map.png)
 
 Certainly, an engaging game necessitates an intriguing map replete with various elements seamlessly integrated into its design. A well-crafted map should be expansive and thoughtfully planned, rendering it even more enjoyable and challenging by establishing connections between diverse locations within the game world.
 
@@ -319,9 +317,7 @@ The number `+7` should indicate the weapon has been upgraded successfully for 7 
 
 #### 2.7.3 Blacksmith Shop (3 marks)
 
-<div style="text-align:center">
-    <img src="image/blacksmith-shop.png" alt="Blacksmith Shop" width="400" height="300">
-</div>
+![Blacksmith-Shop](image/blacksmith-shop.png)
 
 > A blacksmith is a person who makes and repairs things in iron by hand
 
@@ -504,9 +500,7 @@ By refactoring the code in this manner, we indeed improve scalability and mainta
 
 #### 4.1.2 Single Responsibility Principle (SRP)
 
-<div style="text-align:center">
-    <img src="image/srp.png" alt="Single Responsibility Principle" width="400" height="250">
-</div>
+![Single Responsibility Principle (SRP)](image/srp.png)
 
 The Single Responsibility Principle is a fundamental programming principle that states that *A class should have only one reason to change.* It emphasizes that each class should be responsible for a single behavior or functionality.
 
@@ -526,9 +520,7 @@ It's quite common for newcomers who have no prior experience in programming to c
 
 Therefore, it's advisable to refrain from using platforms like WhatsApp or Telegram for exchanging .zip files. Instead, consider using version control systems like Git and platforms like GitHub or Bitbucket, which are designed for efficient and collaborative code management.
 
-<div style="text-align:center">
-    <img src="image/git-and-github.png" alt="Image Description" width="400" height="220">
-</div>
+![Git and Github](image/git-and-github.png)
 
 Among the various version control systems (VCS) available, Git stands out as one of the best options. Although some people may mistakenly believe that Git and GitHub are synonymous, they are, in fact, distinct entities.
 
@@ -597,9 +589,7 @@ It is important to understand that commit messages should accurately reflect the
 
 ### 4.3 Writing readable code
 
-<div style="text-align:center">
-    <img src="image/programmer-meme.png" alt="Image Description" width="300" height="300">
-</div>
+![Programmer meme](image/programmer-meme.png)
 
 Code is read more often than it is written. Avoid trying to be overly clever. While it may seem impressive to code swiftly with three-character variables or craft complex one-liners with numerous loops and clauses, both your present and future selves, along with your teammates, will benefit from the improved readability that comes from taking the time to give your methods and variables meaningful names, maintain proper spacing, and add meaningful comments. Always approach coding as if you'll need to explain it a week later, because the reality is, you will, even if it's just to yourself.
 
