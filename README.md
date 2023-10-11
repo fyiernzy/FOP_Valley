@@ -18,7 +18,7 @@ Ensure that your game effectively allows player to manage movement, item collect
 
 ### 2.1 Map Design (3 marks)
 
-![Map](image/map.png)
+![Map](image/map.jpg)
 
 Certainly, an engaging game necessitates an intriguing map replete with various elements seamlessly integrated into its design. A well-crafted map should be expansive and thoughtfully planned, rendering it even more enjoyable and challenging by establishing connections between diverse locations within the game world.
 
