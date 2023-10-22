@@ -1,30 +1,22 @@
 # FOP Valley
 
-You might read the assignment question on [GitHub](https://github.com/fyiernzy/FOP_Valley/tree/main)
-
-> Text adventures (sometimes synonymously referred to as interactive fiction) are text-based games wherein worlds are described in the narrative and the player submits typically simple commands to interact with the worlds.
-
-This is an extract taken from the Wikipedia. As of your Fundamental of Programming (FOP) Assignment, you're required to design a interactive fiction on your own and distribute it in .JAR file for others to try, play and rate.
+As of your Fundamental of Programming (FOP) Assignment, you're required to design a [Text Adventure](https://en.wikipedia.org/wiki/Text-based_game).
 
 ## 1 - Introduction
 
 ![A Slime](image/slime.png)
 
-In this assignment, your task is to create an interactive fiction game where players can use the Command Line Interface (CLI) to interact with the system and navigate through the story. Your goal is to develop an intriguing narrative where players can acquire and control heroes, similar to the game Genshin Impact, and progress by overcoming challenges. Along the journey, players will receive hints to guide them towards discovering the final truth of the story.
+In this assignment, your task is to create an interactive fiction game where players can use the Command Line Interface (CLI) to interact with the system and navigate through the story. Your goal is to develop an intriguing narrative where players can acquire and control heroes and progress by overcoming challenges.
 
-Ensure that your game effectively allows player to manage movement, item collection, hero acquisition, and game progression. Design an engaging story that captivates players and provides an immersive experience. The CLI interface should enable seamless interaction between players and the game world, allowing them to make choices and navigate through the storyline.
+## 2 - Basic Requirement (Total - 22 marks)
 
-## 2 - Basic Requirement
+### 2.1 Map Design (4 marks)
 
-### 2.1 Map Design (3 marks)
+<div style="text-align:center">
+    <img src="image/map.jpg" alt="Image Description" width="300" height="200">
+</div>
 
-![Map](image/map.jpg)
-
-Certainly, an engaging game necessitates an intriguing map replete with various elements seamlessly integrated into its design. A well-crafted map should be expansive and thoughtfully planned, rendering it even more enjoyable and challenging by establishing connections between diverse locations within the game world.
-
-A sandbox game with only one location to explore can become monotonous. It becomes much more captivating and challenging when there are multiple distinct places, each with its own unique characteristics and features for players to discover. Furthermore, it's essential that each location is sufficiently large; otherwise, there won't be enough content for players to explore.
-
-#### Requirements
+#### 2.1.1 Requirements
 
 1. Create a virtual game environment consisting of the following locations:
    - **Hometown**: A place where players can rest, upgrade their items, and engage in various activities.
@@ -33,62 +25,43 @@ A sandbox game with only one location to explore can become monotonous. It becom
 
 2. Implement a teleportation system allowing players to move between locations seamlessly.
 
-3. Ensure that the system displays the entire view of each location.
+3. Design each location with a minimum size of 30x30, aligning with the provided descriptions.
 
-4. Design each location with a minimum size of 100x100, aligning with the provided descriptions.
+4. Enable players to move freely using the W, A, S, and D keys.
 
-5. Enable players to move freely using the W, A, S, and D keys without the need to press 'Enter' for movement.
+### 2.2 - Creating archetypes (Total - 4 marks)
 
-6. Implement a dynamic screen view that shows the specific area of the map to indicate the player's current location.
+#### 2.2.1 Create 5 archetypes (2 marks)
 
-7. Allow players to pause and save the game at any time by pressing the 'Esc' key.
+Your task is to create five archetype classes based on the information provided in `archetypes.txt`. This file contains the names of archetypes along with their initial attributes, including `healthPoints`, `manaPoints`, `physicalDefense`, `magicalDefense`, `physicalAttack`, and `magicalAttack`. When a player creates a new character, the character's initial attributes should be determined by the data in `archetypes.txt`.
 
-These enhancements ensure a smoother and more immersive gaming experience within the FOP Valley virtual world.
-
-### 2.2 - Creating archetypes (2 marks)
-
-You are required to create a minimum of **5 unique archetypes**, each with their own base attributes and growth rates. While the base attributes can be tailored to your game design, they should include the following properties and behaviors:
+In your implementation, be sure to incorporate the principles of Object-Oriented Programming (OOP). For instance, you can structure your code as follows in Java:
 
 ```java
-int level; // Represents the hero's level
-int experience; // Tracks the hero's experience points
-int manaPoints; // Indicates the hero's mana points
-int healthPoints; // Represents the hero's health points
-List<String> statusEffects; // Stores any status effects applied to the hero
-
-public void levelUp() {
-    // Implement the logic for leveling up the hero
+class Warrior extends Archetypes {
+    // Define instance variables here
 }
 ```
 
-You are not restricted to the specific data types or variable names mentioned in the example code. For instance, you can utilize alternatives such as `double` for mana points (`double manaPoints`) or a list of integers for status effects (`List<Integer> statusEffectsList`). The choice of data types and variable names should be reasonable and align with your game's requirements.
+Additionally, the `Archetypes` class should include a method called `levelUp()`. This method can either be an abstract method or a concrete one, depending on your design choices.
 
-In addition to considering the growth rates for each attribute, it is crucial to incorporate the following growth rate into your code:
+#### 2.2.2 Implement leveling-up system (2 marks)
 
-```java
-public void levelUp() {
-    this.healthPoints += 200;
-    this.manaPoints += 300;
-}
-```
+As characters progress on their journey, they have the ability to level up. Here are the general rules for character progression:
 
-However, you are not restricted to implementing such an algorithm that increases the `healthPoints` linearly. It may not be sensible to increase the `healthPoints` by 300 if the character already has 100,000 `healthPoints`. Feel free to devise a more nuanced solution for scaling the character's `healthPoints` appropriately.
+- During the first 10 levels, characters will require fewer experience points to level up, allowing for rapid early advancement.
+- Each time a character levels up, their `healthPoints`, `manaPoints`, `physicalAttack`, `magicalAttack`, `physicalDefense`, and `magicalDefense` will increase.
+- After reaching level 10, characters will level up at a slower pace.
+- The maximum attainable level for characters is set at 99.
+- The rate of attribute increase upon leveling up will vary based on the character's archetype:
+  - `Warrior`: Health Points and defenses will receive significant boosts.
+  - `Mage`: Magical Attack and Mana Points will experience substantial improvements.
+  - `Rogue`: Both Physical Attack and Physical Defense will be enhanced.
+  - `Paladin`: All forms of Attack will become more potent.
+  - `Archer`: Physical Attack will be substantially strengthened.
+- You are required to create a custom leveling-up algorithm for each archetypes.
 
-Additionally, it's important to note that when a character levels up, they have the ability to fully restore both their HP and MP (Health Points and Mana Points). This adds an element of reward and progression for the player's character as they advance in the game.
-
-Here are some additional attributes that you can consider incorporating into your hero class:
-
-```java
-int criticalChance; // Represents the hero's chance of dealing a critical hit
-int manaRegeneration; // Indicates the amount of mana regenerated per interval (e.g., per 5 seconds)
-int healthRegeneration; // Represents the amount of health regenerated per interval (e.g., per 5 seconds)
-int physicalDefense; // Indicates the hero's physical defense capability
-int magicalDefense; // Represents the hero's magical defense capability
-```
-
-In addition to the base attributes mentioned earlier, these attributes can enhance the depth and complexity of your hero class. You can adjust the attribute names and data types according to your game design.
-
-### 2.3 - Design Monster (3 marks)
+### 2.3 - Design Monster (Total - 3 marks)
 
 In any RPG (Role-playing game), monsters are a common feature. While keeping in mind that you are not restricted in designing your monster class, you may consider designing the Monster class as follows:
 
@@ -98,18 +71,22 @@ class Monster {
     String name;            // Name of the monster.
     int healthPoints;       // Current health points of the monster.
     int manaPoints;         // Current mana points of the monster.
-    int defense;           // Defense attribute for mitigating damage.
-    int attack;            // Attack attribute for dealing damage.
+    int physicalAttack;            // Attack attribute for dealing damage.
+    int magicalAttack;            // Attack attribute for dealing damage.
+    int physicalDefense;           // Defense attribute for mitigating damage.
+    int magicalDefense;           // Defense attribute for mitigating damage.
     List<Ability> abilityList; // List of abilities that the monster can use.
-    List<Droppable> dropList;  // List of items that can be dropped when the monster is defeated.
 }
 ```
 
-Your task is to design **at least seven unique monsters** that are scattered throughout the map. Some of these monsters may appear in groups in certain areas, and players can encounter them multiple times in those areas to obtain materials from them.
+#### 2.3.1 Requirement
 
-### 2.4 - Design abilities (5 marks)
+1. Design **at least 5 unique monsters** that are scattered throughout the *Tower of Monster*.
+2. Utilize inheritance to avoid redundant code.
 
-Similar to DotA 2, Genshin Impact and any other games, the heroes usually have their own abilities. The abilities could have special effect, including `Silence`, that is, making the opponent unable to cast a skill on your character; Perhaps `Damage`, that is, merely cause damage to the opponent.
+### 2.4 - Design abilities (6 marks)
+
+The heroes usually have their own abilities. The abilities could have special effect, including `Silence`, that is, making the opponent unable to cast a skill on your character; Perhaps `Damage`, that is, merely cause damage to the opponent.
 
 Create at least 3 abilities for each archetypes. These abilities will only become accessible once the character reaches a specific level. To illustrate, let's introduce a character named the "Barbarian." The first abilities, dubbed "Roaring," will unlock and become usable once the character reaches level 5.
 
@@ -135,9 +112,21 @@ OPERATION: 1 / 3
 +-------------------------------------------------------------+
 ```
 
+Regardless of the abilities designed, you must include the following status effects:
+
+| Effect   | Explanation                                           |
+| -------- | ----------------------------------------------------- |
+| Stunning | Prevents opponents from taking any action             |
+| Poison   | Causes opponents to gradually lose HP over a few rounds |
+|          |                                                       |
+
 ### 2.5 Round-based Battle System (5 marks)
 
-Now that we have archetypes, monsters, and abilities in place, the next step is to implement the battle system. In a text-based RPG game, players are allowed to engage in round-based battles through interfaces or command-line operations. During each round, players can make moves, including using abilities or making attacks. The number of operations a player can perform in one round may increase as their character levels up.
+Now that we have archetypes, monsters, and abilities in place, the next step is to implement the battle system. In a text-based RPG game, players are allowed to engage in round-based battles through interfaces or command-line operations.
+
+During each round, players can make moves, including using abilities or making attacks. The number of operations a player can perform in one round may increase as their character levels up.
+
+The battle will only end if the player wins, loses, or the player chooses to exit the game. Most importantly, the player and monster can cast abilities on each other.
 
 ```md
 > You have HIT the skeleton warrior, causing 151 damage!
@@ -169,134 +158,42 @@ OPERATION: 1 / 3
 +-------------------------------------------------------------+
 ```
 
-### 2.5 Inventory system (2 marks)
+## 3 - Extra Feature Requirement (Total - 15 marks)
 
-There must be a place where the player can store all of their weapons and loot, and that place is the inventory. In the inventory, the player can check the items stored and also discard items when needed, keeping in mind that the inventory size is limited. Here's a glimpse of how the inventory interface might look:
+### 3.1 - Save game functionality (4 marks)
 
-```bash
-Inventory (3 / 20)
-[1] Sword (Quantity: 1)
-    - A sharp sword that appears to have felled many monsters.
-    - Attributes:
-        - Attack: +15
-        - Defense: +3
+It would be a great pity if someone couldn't save their game progress. Without the ability to save, they'd have to replay the same content repeatedly, which can become monotonous. To enhance the player experience, it's crucial to provide a way for them to record their current game status so they can pick up their progress next time. Additionally, the game could remind them to save their progress before exiting, in case they forget to do so. Players would greatly appreciate this feature, as it ensures they don't lose their hard-earned progress. Consider using a database and the knowledge you have acquired in File I/O for implementing this functionality.
 
-[2] Apple (Quantity: 5)
-    - Fresh apples picked from the apple tree. Consuming one revives 15 HP.
+### 3.2 - Abnormal input Handling (2 marks)
 
-[3] Wood (Quantity: 25)
-    - Wood gathered in the forest, an essential material for crafting weapons.
+Mistakes can occur, whether unintentionally or intentionally. Therefore, our game should be capable of handling these abnormal inputs wisely and, perhaps, provide valuable feedback to inform the player about what's wrong with the input. It could be a typo or an unrecognized command.
 
-[A] View Next
-[B] View Previous
-[B] Discard an item
-```
+### 3.3 Weapon System (7 marks)
 
-### 2.6 Shop system (4 marks)
+#### 3.3.1 Design 1 weapon for each archetypes (2 marks)
 
-Absolutely, having a shop is a common feature in RPG games. It serves as a place where players can purchase superior equipment, acquire materials for weapon upgrades, and even sell off their unused items. It's essential that players receive a receipt for each transaction they make in the shop. This not only provides a record of their purchases but also enhances the realism and immersion of the in-game economy.
+Weapons can be a significant attraction for players. A good weapon can greatly enhance the player's engagement with the game, motivating them to explore and seek out these weapons. Hence, design 1 weapon for each archetypes. Each archetype will have their weapon since level 1.
 
-Here's how the shop system might look like:
+However, not all weapons are suitable for every archetype. Clearly, a barbarian is not suited for wielding a bow; instead, they should wield a sword. Similarly, a wizard would probably not use a gun, as wizards tend to harness the power of magic to combat monsters.
 
-```bash
-+==========================+
-+           Shop           +
-+==========================+
-   .------\ /------.
-   |       -       |
-   |               |
-   |               |
-   |               |
-_______________________
-===========.===========
-  / ~~~~~     ~~~~~ \
- /|     |     |\
- W   ---  / \  ---   W
- \.      |o o|      ./
-  |                 |
-  \    #########    /
-   \  ## ----- ##  /
-    \##         ##/
-     \_____v_____/
-
-+============================+
-> Hello! How can I help you?
-+============================+
-
-[1] Sell Items
-[2] Buy Items
-[3] Exit the Shop
-
->
-```
-
-If the player wishes to sell items, they might encounter the following page.
-
-```bash
-Sell Items
-
-[1] Sword (Quantity: 1, Sell Price: 500)
-[2] Apple (Quantity: 5, Sell Price: 25)
-[3] Wood (Quantity: 25, Sell Price: 10)
-
-[A] View Next
-[B] View Previous
-[C] Exit
-
-Please enter 'sell <item_number> quantity <quantity>' if you wish to sell anything.
-
->
-```
-
-How can a player make a purchase? You can see the process in the following:
-
-```bash
-Buy items
-[1] The cherry (Price: $200)
-[2] The spaghetti (Price: $500)
-[3] A magic sword (Price: $100000)
-
-More actions
-[A] View Next
-[B] View Previous
-[C] View Cart
-[D] Exit
-
-Hints
-[1] Enter `pick item <item_number> quantity <number>` to put the item to your cart.
-[2] Enter `buy` to confirm the payment.
-[3] Enter `invoice` to generate an invoice
-[4] Enter `view item <item_number>` to view the item details
-
->
-```
-
-### 2.7 Weapon System
-
-#### 2.7.1 Design weapons for each archetypes (3 marks)
-
-Weapons can be a significant attraction for players. A good weapon can greatly enhance the player's engagement with the game, motivating them to explore and seek out these weapons. However, not all weapons are suitable for every archetype. Clearly, a barbarian is not suited for wielding a bow; instead, they should wield a sword. Similarly, a wizard would probably not use a gun, as wizards tend to harness the power of magic to combat monsters.
-
-The provided code snippet serves as a valuable reference for designing weapons in your game. While you are not limited to the specific naming convention or data types, it's essential to include all the mentioned elements for a comprehensive weapon design. Here's an explanation of each element:
+The provided code snippet serves as a valuable reference for designing weapons in your game. While you are not limited to the specific naming convention or data types, it's essential to include all the mentioned elements for a comprehensive weapon design.
 
 ```java
-class Weapon {
-    String name;             // The name of the weapon (e.g., "Fiery Sword")
-    String archetype;        // The archetype or character class suitable for this weapon (e.g., "Warrior")
-    String description;      // A description of the weapon (e.g., "A blade engulfed in flames.")
-    int attack;              // The weapon's attack power
-    int defend;              // The weapon's defensive capabilities
-    int strength;            // Strength attribute added when equipped the weapon
-    int agility;             // Agility attribute added when equipped the weapon
-    int intelligence;        // Intelligence attribute added when equipped the weapon
-    List<WeaponEffect> effects; // A list of special effects or enchantments the weapon can have
-    Wearing type;            // The type of weapon (e.g., clothes, shoes, etc.)
+// Define a 'Weapon' class to represent in-game weapons
+public class Weapon {
+    String name;                // The name of the weapon
+    String archetype;           // The archetype this weapon is associated with
+    String description;         // A description of the weapon
+    int physicalAttack;         // Physical attack power of the weapon
+    int magicalAttack;          // Magical attack power of the weapon
+    int healthPoint;            // Health Point provided by the weapon
+    int physicalDefense;        // Physical defense provided by the weapon
+    int magicalDefense;         // Magical defense provided by the weapon
+    List<WeaponEffect> effects; // List of special effects associated with the weapon
 }
 ```
 
-You can use this as a basis for defining and customizing various weapons in your game, ensuring that each weapon has a name, archetype suitability, description, relevant attributes, special effects, and a weapon type specified.
-
-#### 2.7.2 Upgrade the weapon (2 marks)
+#### 3.3.2 Upgrade the weapon (2 marks)
 
 Furthermore, a weapon should be upgradeable to gain additional effects as the game progresses. As monsters become increasingly formidable, the player's weapon should evolve to match the rising challenge, ensuring that it remains effective throughout the game.
 
@@ -305,83 +202,17 @@ Consider the following `View Weapon Information`:
 ```bash
 Deathsong +7
 +--------------------------------+
-| Archetype          |  Wizard   |
-| Level Required     |  6        |     
-| Attack             |  48 + 15  |
+| Archetype          |  Wizard   |     
+| Physical Attack    |  48 + 15  |
 | HealthPoint        |  40 + 23  |
-| Evasion            |  30 + 27  |
 +--------------------------------+
 ```
 
 The number `+7` should indicate the weapon has been upgraded successfully for 7 times already. It is worth noting that the color of `+7` displayed in the console and the `+23` which is attribute upgraded should be marked in different color for the player to recognize it easily.
 
-#### 2.7.3 Blacksmith Shop (3 marks)
-
-![Blacksmith-Shop](image/blacksmith-shop.png)
-
-> A blacksmith is a person who makes and repairs things in iron by hand
+#### 3.3.3 Blacksmith Shop (3 marks)
 
 The player cannot upgrade their weapon independently, as this would severely disrupt game balance. Instead, they should visit a specialized location, such as a blacksmith shop, where they must pay for both the necessary materials and the upgrade costs
-
-```bash
-+=========================================+
-+        A professional blacksmith        +
-+=========================================+
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣷⡄⠀⠀⠀⠀⠀⠀⠀⢠⣄⣤⣦⣤⣀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠛⠿⠟⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⣠⠀⠘⢿⣿⠟⠀⢠⡀⠀⠀⠀⠀⠀⠀⠀⣰⡗⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⢠⣾⠀⣿⠀⣷⣦⣤⣴⡇⢸⡇⠀⣷⠀⠀⠀⠀⣰⡟⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⣿⣿⠀⣿⣤⣈⣉⣉⣉⣠⣼⡇⠀⣿⡆⠀⠀⣰⡟⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⣿⣿⠀⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⣿⠇⠀⠀⠛⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠛⠛⠀⠛⠛⠛⠛⠛⠛⠛⠛⠃⠀⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⣤⣤⣤⣤⣤⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠈⠙⠛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠋⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠿⠿⠿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠇⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠘⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠃⠀⠀⠀⠀⠀
-+=========================================+
-> The brave traveler, how can I help you? 
-+=========================================+
-[1] You look handsome today!
-[2] I would like to upgrade my weapon.
-[3] Quit
-+=========================================+
-```
-
-To make the game be more interesting, the player can opt to chat with the blacksmith and the player will receive the response from the blacksmith. For instance:
-
-```bash
-+=========================================+
-+        A professional blacksmith        +
-+=========================================+
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣷⡄⠀⠀⠀⠀⠀⠀⠀⢠⣄⣤⣦⣤⣀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠛⠿⠟⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⣠⠀⠘⢿⣿⠟⠀⢠⡀⠀⠀⠀⠀⠀⠀⠀⣰⡗⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⢠⣾⠀⣿⠀⣷⣦⣤⣴⡇⢸⡇⠀⣷⠀⠀⠀⠀⣰⡟⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⣿⣿⠀⣿⣤⣈⣉⣉⣉⣠⣼⡇⠀⣿⡆⠀⠀⣰⡟⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⣿⣿⠀⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⣿⠇⠀⠀⠛⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠛⠛⠀⠛⠛⠛⠛⠛⠛⠛⠛⠃⠀⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⣤⣤⣤⣤⣤⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠈⠙⠛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠋⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠿⠿⠿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠇⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠘⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠃⠀⠀⠀⠀⠀
-+=========================================+
-> Wow! Thank you. So, how can I help you?
-+=========================================+
-[1] You look handsome today!
-[2] I would like to upgrade my weapon.
-[3] Quit
-+=========================================+
-```
-
-This code snippet displays how the interface might appear when the player chooses to upgrade their weapon. Here's what the interface looks like when the player makes that choice:
 
 ```bash
 +=========================================+
@@ -408,9 +239,6 @@ This code snippet displays how the interface might appear when the player choose
 
 [1] DeathSong (+6 -> +7)
     - Price: 15000/ 700
-    - Material:
-        - Iron (15/7)
-        - Gold (3/5)
     - Changes
         - Attack: 76 -> 79
         - Strength: 82 -> 89
@@ -420,41 +248,13 @@ This code snippet displays how the interface might appear when the player choose
 >
 ```
 
-The upgrade interface will encompass all the necessary information on a single page. This includes the upgrade fee, required materials, and the expected changes to the weapon upon upgrading. Please note that the values will be presented in the format (a/b), where 'a' represents the current available resources in the player's inventory, and 'b' represents the resources needed for the upgrade.
+The upgrade interface will encompass all the necessary information on a single page. This includes the upgrade fee, required materials, and the expected changes to the weapon upon upgrading.
 
-## 3 - Extra Feature Requirement
+Please note that the values will be presented in the format (a/b), where 'a' represents the current available resources in the player's inventory, and 'b' represents the resources needed for the upgrade.
 
-### 3.1 - Save game functionality
+### 3.4 Colorful text (2 mark)
 
-It would be a great pity if someone couldn't save their game progress. Without the ability to save, they'd have to replay the same content repeatedly, which can become monotonous. To enhance the player experience, it's crucial to provide a way for them to record their current game status. Additionally, the game could remind them to save their progress before exiting, in case they forget to do so. Players would greatly appreciate this feature, as it ensures they don't lose their hard-earned progress.
-
-### 3.2 - Player Account and Leaderboard
-
-It would be a fantastic idea for individuals to register separate accounts, allowing each of them to play independently. Additionally, the inclusion of a leaderboard could serve as motivation for players to invest more time in leveling up and to continue progressing by challenging the Tower of Monsters.
-
-### 3.3 - Abnormal input Handling
-
-Mistakes can occur, whether unintentionally or intentionally. Therefore, our game should be capable of handling these abnormal inputs wisely and, perhaps, provide valuable feedback to inform the player about what's wrong with the input. It could be a typo or an unrecognized command.
-
-### 3.4 - Export as JAR
-
-Not everyone is a programmer; for example, our target audience could be a businessman, a Year 1 student, or even our grandmother. They might not be familiar with Java or all the setup and dependencies that come with it. Therefore, it would be better to package the code as a JAR (Java Archive) and automatically set up all the necessary files and dependencies without requiring human intervention.
-
-### 3.5 Open Source and Collaboration
-
-A great game is often the result of collaborative efforts rather than a solo endeavor. It thrives on player feedback and can benefit from contributions from programmers around the world. To ensure your game can be continually improved, consider open-sourcing your code and creating a platform for others interested in enhancing the game's resources, such as the item list, archetypes, and maps. Additionally, allowing your character to experience other groups' worlds and acquire new items is a great idea. This might involve communication and collaboration with other groups, which can lead to a richer and more engaging gaming experience.
-
-### 3.6 Some comments
-
-Some of your friends might ask whether they should design a Graphical User Interface (GUI) for their assignment. However, it's important to note that there are no marks allocated for creating a GUI in this assignment. The reason for this is that the essence of Fundamentals of Programming (FOP) lies not in spending your time dealing with technologies like JavaFX or Java Swing, which are less relevant in today's software development landscape.
-
-It's perfectly acceptable to harness the capabilities of ChatGPT to assist you while working on your assignments. You may want to explore the use of an embedded database and incorporate SQL syntax in your code to streamline your work. Additionally, always keep modularity in mind and strive to avoid hard-coding. For example, if your project involves extensive dialogues for various conversations, it's advisable to store them in a .txt file rather than embedding them directly in the code. This approach makes modifications and amendments to the text considerably easier.
-
-If you are seeking for the possible input and output, you might watch the following videos on Youtube:
-
-1. [SanctuaryRPG - (Classic Text Adventure Game)](https://www.youtube.com/watch?v=_nuS86ITjIM)
-2. [Open world Ascii based Python RPG | Python Curses](https://www.youtube.com/watch?v=DX1a8Uz12Xc)
-3. [Python Text RPG Showcase | OldenRPG](https://www.youtube.com/watch?v=rz_2ml0AQ4k)
+It would be more interesting if certain keywords could be displayed in different colors. For example, it would provide a clearer reminder if the materials required for upgrading the weapon are marked in green when they are sufficient and in red when they are insufficient. You can implement this feature easily by searching on Google or using ChatGPT. You might found some useful resources [here](https://github.com/fyiernzy/Assignment-Suzume/blob/main/suzume/src/main/java/com/assignment/suzume/constants/FontStyle.java).
 
 ## 4 - Reminders
 
@@ -500,7 +300,9 @@ By refactoring the code in this manner, we indeed improve scalability and mainta
 
 #### 4.1.2 Single Responsibility Principle (SRP)
 
-![Single Responsibility Principle (SRP)](image/srp.png)
+<div style="text-align:center">
+    <img src="image/srp.png" alt="Single Responsibility Principle" width="400" height="250">
+</div>
 
 The Single Responsibility Principle is a fundamental programming principle that states that *A class should have only one reason to change.* It emphasizes that each class should be responsible for a single behavior or functionality.
 
@@ -520,7 +322,9 @@ It's quite common for newcomers who have no prior experience in programming to c
 
 Therefore, it's advisable to refrain from using platforms like WhatsApp or Telegram for exchanging .zip files. Instead, consider using version control systems like Git and platforms like GitHub or Bitbucket, which are designed for efficient and collaborative code management.
 
-![Git and Github](image/git-and-github.png)
+<div style="text-align:center">
+    <img src="image/git-and-github.png" alt="Image Description" width="400" height="220">
+</div>
 
 Among the various version control systems (VCS) available, Git stands out as one of the best options. Although some people may mistakenly believe that Git and GitHub are synonymous, they are, in fact, distinct entities.
 
@@ -589,7 +393,9 @@ It is important to understand that commit messages should accurately reflect the
 
 ### 4.3 Writing readable code
 
-![Programmer meme](image/programmer-meme.png)
+<div style="text-align:center">
+    <img src="image/programmer-meme.png" alt="Image Description" width="300" height="300">
+</div>
 
 Code is read more often than it is written. Avoid trying to be overly clever. While it may seem impressive to code swiftly with three-character variables or craft complex one-liners with numerous loops and clauses, both your present and future selves, along with your teammates, will benefit from the improved readability that comes from taking the time to give your methods and variables meaningful names, maintain proper spacing, and add meaningful comments. Always approach coding as if you'll need to explain it a week later, because the reality is, you will, even if it's just to yourself.
 
@@ -600,3 +406,19 @@ Balancing the need to optimize an algorithm for time complexity in large-scale p
 #### 4.3.1 Java Naming Conventions
 
 There are generally three naming conventions, which are known as camelCase, snake_case and PascalCase. You might refer to [This Article](https://www.freecodecamp.org/news/snake-case-vs-camel-case-vs-pascal-case-vs-kebab-case-whats-the-difference/#snake-case) which clearly explains everything you would need for the naming convention.
+
+## 5 - Contact me and my last word
+
+For any questions or clarifications, please contact me, Ng Zhi Yang, via WhatsApp or Telegram at 017-7809298, or by email at 22004833@siswa.um.edu.my. However, WhatsApp and Telegram will always be the preferred choices. If you contact me through email and I don't reply within 24 hours, please feel free to contact me through those messaging apps.
+
+This assignment is aimed at ensuring mastery of core concepts of flow control, File I/O, and especially Object-Oriented Programming. I hope you all will become more familiar with what an algorithm is, what computational thinking is, and certainly, master the concept of Object-Oriented Programming, which is a pillar of most programming in today's world.
+
+Some of your friends might ask whether they should design a Graphical User Interface (GUI) for their assignment. However, it's important to note that there are no marks allocated for creating a GUI in this assignment. The reason for this is that the essence of Fundamentals of Programming (FOP) lies not in spending your time dealing with technologies like JavaFX or Java Swing.
+
+It's perfectly acceptable to harness the capabilities of ChatGPT to assist you while working on your assignments. You may want to explore the use of an embedded database and incorporate SQL syntax in your code to streamline your work. Additionally, always keep modularity in mind and strive to avoid hard-coding. For example, if your project involves extensive dialogues for various conversations, it's advisable to store them in a .txt file rather than embedding them directly in the code. This approach makes modifications and amendments to the text considerably easier.
+
+If you are seeking for the possible input and output, you might watch the following videos on Youtube:
+
+1. [SanctuaryRPG - (Classic Text Adventure Game)](https://www.youtube.com/watch?v=_nuS86ITjIM)
+2. [Open world Ascii based Python RPG | Python Curses](https://www.youtube.com/watch?v=DX1a8Uz12Xc)
+3. [Python Text RPG Showcase | OldenRPG](https://www.youtube.com/watch?v=rz_2ml0AQ4k)
