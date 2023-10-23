@@ -1,5 +1,7 @@
 # FOP Valley
 
+All the resources mentioned in this assignment can be found at [Here](https://github.com/fyiernzy/FOP_Valley/tree/main).
+
 As of your Fundamental of Programming (FOP) Assignment, you're required to design a [Text Adventure](https://en.wikipedia.org/wiki/Text-based_game).
 
 ## 1 - Introduction
@@ -8,34 +10,23 @@ As of your Fundamental of Programming (FOP) Assignment, you're required to desig
 
 In this assignment, your task is to create an interactive fiction game where players can use the Command Line Interface (CLI) to interact with the system and navigate through the story. Your goal is to develop an intriguing narrative where players can acquire and control heroes and progress by overcoming challenges.
 
-## 2 - Basic Requirement (Total - 22 marks)
+## 2 - Basic Requirement (Total - 8 marks)
 
-### 2.1 Map Design (4 marks)
+### 2.1 Map Design (0.5 mark)
 
-<div style="text-align:center">
-    <img src="image/map.jpg" alt="Image Description" width="300" height="200">
-</div>
+1. Design a 40x40 map consisting of the character # as obstacles where players cannot pass through.
 
-#### 2.1.1 Requirements
+2. Enable players can move their characters using the W, A, S, and D keys. W means upward, S means downward, A means left, and D means right.
 
-1. Create a virtual game environment consisting of the following locations:
-   - **Hometown**: A place where players can rest, upgrade their items, and engage in various activities.
-   - **Forest**: An area where players can face monsters and collect loot for upgrading.
-   - **Tower of Monsters**: The ultimate challenge that players must conquer to win the game.
+### 2.2 - Creating archetypes (1 marks)
 
-2. Implement a teleportation system allowing players to move between locations seamlessly.
+#### 2.2.1 Create 5 archetypes
 
-3. Design each location with a minimum size of 30x30, aligning with the provided descriptions.
+1. Create five archetype classes based on the information provided in `archetypes.txt`. This file contains the names of archetypes along with their initial attributes, including `healthPoints`, `manaPoints`, `physicalDefense`, `magicalDefense`, `physicalAttack`, and `magicalAttack`. When a player creates a new character, the character's initial attributes should be determined by the data in `archetypes.txt`.
 
-4. Enable players to move freely using the W, A, S, and D keys.
+2. `Archetypes` class should include a method called `levelUp()`.
 
-### 2.2 - Creating archetypes (Total - 4 marks)
-
-#### 2.2.1 Create 5 archetypes (2 marks)
-
-Your task is to create five archetype classes based on the information provided in `archetypes.txt`. This file contains the names of archetypes along with their initial attributes, including `healthPoints`, `manaPoints`, `physicalDefense`, `magicalDefense`, `physicalAttack`, and `magicalAttack`. When a player creates a new character, the character's initial attributes should be determined by the data in `archetypes.txt`.
-
-In your implementation, be sure to incorporate the principles of Object-Oriented Programming (OOP). For instance, you can structure your code as follows in Java:
+3. Incorporate the principles of OOP. For instance, you can structure your code as follows in Java:
 
 ```java
 class Warrior extends Archetypes {
@@ -43,9 +34,7 @@ class Warrior extends Archetypes {
 }
 ```
 
-Additionally, the `Archetypes` class should include a method called `levelUp()`. This method can either be an abstract method or a concrete one, depending on your design choices.
-
-#### 2.2.2 Implement leveling-up system (2 marks)
+#### 2.2.2 Implement leveling-up system
 
 As characters progress on their journey, they have the ability to level up. Here are the general rules for character progression:
 
@@ -61,9 +50,12 @@ As characters progress on their journey, they have the ability to level up. Here
   - `Archer`: Physical Attack will be substantially strengthened.
 - You are required to create a custom leveling-up algorithm for each archetypes.
 
-### 2.3 - Design Monster (Total - 3 marks)
+### 2.3 - Design Monster (1 marks)
 
-In any RPG (Role-playing game), monsters are a common feature. While keeping in mind that you are not restricted in designing your monster class, you may consider designing the Monster class as follows:
+1. Design a `Monster` class that possesses attributes such as `healthPoints`, `manaPoints`, `physicalDefense`, `magicalDefense`, `physicalAttack`, and `magicalAttack`.
+2. Design **5 unique monsters** that extend the `Monster` class based on description in `monsters.txt`
+3. The locations of the monsters on the map are generated randomly.
+4. Each time a player enters the game, 7 monsters of different types will be generated.
 
 ```java
 // Define the Monster class to represent in-game monsters.
@@ -75,23 +67,23 @@ class Monster {
     int magicalAttack;            // Attack attribute for dealing damage.
     int physicalDefense;           // Defense attribute for mitigating damage.
     int magicalDefense;           // Defense attribute for mitigating damage.
-    List<Ability> abilityList; // List of abilities that the monster can use.
+    List<Ability> abilityList; // List of spells that the monster can use.
 }
 ```
 
-#### 2.3.1 Requirement
+### 2.4 - Design spells (2.5 marks)
 
-1. Design **at least 5 unique monsters** that are scattered throughout the *Tower of Monster*.
-2. Utilize inheritance to avoid redundant code.
+The heroes usually have their own spells. The spells could have special effect, say `Silence`, makes the opponent unable to cast a skill on your character; Perhaps `FireBall`, that is, merely cause damage to the opponent.
 
-### 2.4 - Design abilities (6 marks)
-
-The heroes usually have their own abilities. The abilities could have special effect, including `Silence`, that is, making the opponent unable to cast a skill on your character; Perhaps `Damage`, that is, merely cause damage to the opponent.
-
-Create at least 3 abilities for each archetypes. These abilities will only become accessible once the character reaches a specific level. To illustrate, let's introduce a character named the "Barbarian." The first abilities, dubbed "Roaring," will unlock and become usable once the character reaches level 5.
+1. Create **3 spells** for each archetype.
+2. These spells will only become accessible once the character reaches a specific level. *For instance, let's consider a character named the "Warrior." The first spell, named "Roaring," will unlock and become usable once the character reaches level 5.*
+3. The spells have a cooldown period, meaning that a spell can only be used after a certain amount of time. You should integrate the concept of cooldown into the spell design.
+4. All of the spells for each archetype, including their descriptions and cooldowns, are documented in `spells.txt`.
+5. The monsters have the capability to replenish their `manaPoints`.
+6. You are not restricted to follow the following design. It only serves as a reference.
 
 ```md
-Barbarian
+Warrior
 --> HP: [:::::           ] (45 / 60)
 --> MP: [//////////////  ] (80 / 100)
 +-------------------------------------------------------------+
@@ -100,33 +92,31 @@ OPERATION: 1 / 3
 >> Starter
 [S1] Attack
 [S2] Defend
-[S3] Heal                   < -20 MP, +200 HP, ->
-[S4] Use item
+[S3] Heal                   < -20 MP, 0 / 3 CD, +200 HP, ->
 [S5] Escape
 
->> Abilities
-[A1] Roaring                < -10 MP,    0 HP, Cast silence>
+>> spells
+[A1] Roaring                < -10 MP, 2 / 3 CD,    0 HP, Cast silence>
 [A2] <Locked - 10>
 [A3] <Locked - 15>
-[A4] <Locked - 20>
 +-------------------------------------------------------------+
 ```
 
-Regardless of the abilities designed, you must include the following status effects:
+### 2.5 Round-based Battle System (3 marks)
 
-| Effect   | Explanation                                           |
-| -------- | ----------------------------------------------------- |
-| Stunning | Prevents opponents from taking any action             |
-| Poison   | Causes opponents to gradually lose HP over a few rounds |
-|          |                                                       |
+Now that we have archetypes, monsters, and spells in place, the next step is to implement the battle system. In a text-based RPG game, players are allowed to engage in round-based battles through interfaces.
 
-### 2.5 Round-based Battle System (5 marks)
+1. In each round, players can make moves, which may include using spells or launching attacks.
 
-Now that we have archetypes, monsters, and abilities in place, the next step is to implement the battle system. In a text-based RPG game, players are allowed to engage in round-based battles through interfaces or command-line operations.
+2. The battle will only conclude when the player wins, loses, or chooses to exit the game. It's important to note that both the player and the monster can cast spells on each other.
 
-During each round, players can make moves, including using abilities or making attacks. The number of operations a player can perform in one round may increase as their character levels up.
+3. Players have the option to attack, defend, heal, or escape. They are also allowed to use spells.
 
-The battle will only end if the player wins, loses, or the player chooses to exit the game. Most importantly, the player and monster can cast abilities on each other.
+4. Your interface should provide informative descriptions that reflect the current situation. For instance, *You have HIT the skeleton warrior, causing 151 damage!*
+
+5. Your interface should display the HP (Health Points) bars and MP (Mana Points) bars of both parties.
+
+6. The battle system should be able to make the monster automatically battle with the player. They will attack or cast spells only, without the intention to defend.
 
 ```md
 > You have HIT the skeleton warrior, causing 151 damage!
@@ -137,124 +127,48 @@ Skeleton Warrior
 
 > CRITICAL! Skeleton Warrior has SLASHED you for 57 damage!
 
-Barbarian
+Warrior
 --> HP: [:::::           ] (45 / 60)
 --> MP: [//////////////  ] (80 / 100)
 +-------------------------------------------------------------+
-OPERATION: 1 / 3
-
 >> Starter
 [S1] Attack
 [S2] Defend
-[S3] Heal                   < -20 MP, +200 HP, ->
-[S4] Use item
+[S3] Heal                   < -20 MP, 0 / 3 CD, +200 HP, ->
 [S5] Escape
 
->> Abilities
-[A1] Rabid Lunge            < -10 MP,    0 HP, Cast silence>
+>> spells
+[A1] Rabid Lunge            < -10 MP, 2 / 3 CD,    0 HP, Cast silence>
 [A2] <Locked - 10>
 [A3] <Locked - 15>
-[A4] <Locked - 20>
 +-------------------------------------------------------------+
 ```
 
-## 3 - Extra Feature Requirement (Total - 15 marks)
+## 3 - Extra Feature Requirement (Total - 4 marks)
 
-### 3.1 - Save game functionality (4 marks)
+### 3.1 Save game functionality (2 mark)
 
-It would be a great pity if someone couldn't save their game progress. Without the ability to save, they'd have to replay the same content repeatedly, which can become monotonous. To enhance the player experience, it's crucial to provide a way for them to record their current game status so they can pick up their progress next time. Additionally, the game could remind them to save their progress before exiting, in case they forget to do so. Players would greatly appreciate this feature, as it ensures they don't lose their hard-earned progress. Consider using a database and the knowledge you have acquired in File I/O for implementing this functionality.
+It would be a great pity if someone couldn't save their game progress. Without the ability to save, they'd have to replay the same content repeatedly, which can become monotonous.
 
-### 3.2 - Abnormal input Handling (2 marks)
+1. To enhance the player experience, it's crucial to provide a way for them to record their current game status so they can pick up their progress next time.
+2. The game could remind them to save their progress before exiting, in case they forget to do so. Players would greatly appreciate this feature, as it ensures they don't lose their hard-earned progress.
+3. Remember to leave a place for them to save the game.
+
+Consider using a database and the knowledge you have acquired in File I/O for implementing this functionality.
+
+### 3.2 Abnormal input Handling (0.5 mark)
 
 Mistakes can occur, whether unintentionally or intentionally. Therefore, our game should be capable of handling these abnormal inputs wisely and, perhaps, provide valuable feedback to inform the player about what's wrong with the input. It could be a typo or an unrecognized command.
 
-### 3.3 Weapon System (7 marks)
-
-#### 3.3.1 Design 1 weapon for each archetypes (2 marks)
-
-Weapons can be a significant attraction for players. A good weapon can greatly enhance the player's engagement with the game, motivating them to explore and seek out these weapons. Hence, design 1 weapon for each archetypes. Each archetype will have their weapon since level 1.
-
-However, not all weapons are suitable for every archetype. Clearly, a barbarian is not suited for wielding a bow; instead, they should wield a sword. Similarly, a wizard would probably not use a gun, as wizards tend to harness the power of magic to combat monsters.
-
-The provided code snippet serves as a valuable reference for designing weapons in your game. While you are not limited to the specific naming convention or data types, it's essential to include all the mentioned elements for a comprehensive weapon design.
-
-```java
-// Define a 'Weapon' class to represent in-game weapons
-public class Weapon {
-    String name;                // The name of the weapon
-    String archetype;           // The archetype this weapon is associated with
-    String description;         // A description of the weapon
-    int physicalAttack;         // Physical attack power of the weapon
-    int magicalAttack;          // Magical attack power of the weapon
-    int healthPoint;            // Health Point provided by the weapon
-    int physicalDefense;        // Physical defense provided by the weapon
-    int magicalDefense;         // Magical defense provided by the weapon
-    List<WeaponEffect> effects; // List of special effects associated with the weapon
-}
-```
-
-#### 3.3.2 Upgrade the weapon (2 marks)
-
-Furthermore, a weapon should be upgradeable to gain additional effects as the game progresses. As monsters become increasingly formidable, the player's weapon should evolve to match the rising challenge, ensuring that it remains effective throughout the game.
-
-Consider the following `View Weapon Information`:
-
-```bash
-Deathsong +7
-+--------------------------------+
-| Archetype          |  Wizard   |     
-| Physical Attack    |  48 + 15  |
-| HealthPoint        |  40 + 23  |
-+--------------------------------+
-```
-
-The number `+7` should indicate the weapon has been upgraded successfully for 7 times already. It is worth noting that the color of `+7` displayed in the console and the `+23` which is attribute upgraded should be marked in different color for the player to recognize it easily.
-
-#### 3.3.3 Blacksmith Shop (3 marks)
-
-The player cannot upgrade their weapon independently, as this would severely disrupt game balance. Instead, they should visit a specialized location, such as a blacksmith shop, where they must pay for both the necessary materials and the upgrade costs
-
-```bash
-+=========================================+
-+        A professional blacksmith        +
-+=========================================+
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣷⡄⠀⠀⠀⠀⠀⠀⠀⢠⣄⣤⣦⣤⣀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠛⠿⠟⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⣠⠀⠘⢿⣿⠟⠀⢠⡀⠀⠀⠀⠀⠀⠀⠀⣰⡗⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⢠⣾⠀⣿⠀⣷⣦⣤⣴⡇⢸⡇⠀⣷⠀⠀⠀⠀⣰⡟⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⣿⣿⠀⣿⣤⣈⣉⣉⣉⣠⣼⡇⠀⣿⡆⠀⠀⣰⡟⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⣿⣿⠀⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⣿⠇⠀⠀⠛⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠛⠛⠀⠛⠛⠛⠛⠛⠛⠛⠛⠃⠀⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⣤⣤⣤⣤⣤⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠈⠙⠛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠋⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠿⠿⠿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠇⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠘⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠃⠀⠀⠀⠀⠀
-+=========================================+
-> Which weapon would you like to upgrade?
-+=========================================+
-
-[1] DeathSong (+6 -> +7)
-    - Price: 15000/ 700
-    - Changes
-        - Attack: 76 -> 79
-        - Strength: 82 -> 89
-
-[A] View More
-
->
-```
-
-The upgrade interface will encompass all the necessary information on a single page. This includes the upgrade fee, required materials, and the expected changes to the weapon upon upgrading.
-
-Please note that the values will be presented in the format (a/b), where 'a' represents the current available resources in the player's inventory, and 'b' represents the resources needed for the upgrade.
-
-### 3.4 Colorful text (2 mark)
+### 3.3 Colorful text (0.5 mark)
 
 It would be more interesting if certain keywords could be displayed in different colors. For example, it would provide a clearer reminder if the materials required for upgrading the weapon are marked in green when they are sufficient and in red when they are insufficient. You can implement this feature easily by searching on Google or using ChatGPT. You might found some useful resources [here](https://github.com/fyiernzy/Assignment-Suzume/blob/main/suzume/src/main/java/com/assignment/suzume/constants/FontStyle.java).
+
+### 3.4 Database Implementation (1 marks)
+
+When considering the implementation of a user login function or storing the base attributes of each archetype to streamline your workflow, it's advisable to use an embedded database. Using SQLite with a database file ending in `.db` is a good option, while choosing MySQL or PostgreSQL would be a more popular choice. You can select the one that best suits your needs and preferences.
+
+Feel free to incorporate any other features that you find interesting! Don't confine yourselves to the assignment question. Get as creative as you can, because there are no limits!
 
 ## 4 - Reminders
 
@@ -330,7 +244,7 @@ Among the various version control systems (VCS) available, Git stands out as one
 
 Git is a distributed version control system designed to track changes in computer files. It excels at facilitating collaborative software development among programmers. Its key objectives include speed, data integrity, and support for distributed and non-linear workflows.
 
-On the other hand, GitHub serves as an online hosting service specifically tailored for software development and version control using Git. It enhances Git's capabilities by providing features such as access control, bug tracking, software feature requests, task management, continuous integration, and project wikis.
+On the other hand, GitHub serves as an online hosting service specifically tailored for software development and version control using Git. It enhances Git's capspells by providing features such as access control, bug tracking, software feature requests, task management, continuous integration, and project wikis.
 
 In your assignment, it is crucial for you and your teammates to leverage Git and GitHub for effective team cooperation. Merely relying on copying and pasting or sharing ZIP files might suffice for small projects. However, as the codebase grows significantly, such approaches can lead to disastrous consequences. Utilizing Git and GitHub ensures streamlined collaboration and mitigates the challenges associated with managing large-scale projects.
 
@@ -399,23 +313,11 @@ It is important to understand that commit messages should accurately reflect the
 
 Code is read more often than it is written. Avoid trying to be overly clever. While it may seem impressive to code swiftly with three-character variables or craft complex one-liners with numerous loops and clauses, both your present and future selves, along with your teammates, will benefit from the improved readability that comes from taking the time to give your methods and variables meaningful names, maintain proper spacing, and add meaningful comments. Always approach coding as if you'll need to explain it a week later, because the reality is, you will, even if it's just to yourself.
 
-#### 4.3.1 Simple VS Complex Algorithm
-
-Balancing the need to optimize an algorithm for time complexity in large-scale problems with the equally important factors of simplicity and readability is crucial. In the realm of software development, prioritizing code comprehensibility for all team members supersedes the pursuit of sophistication through intricate data structures and excessive reliance on lengthy, repetitive naming conventions, solely in an attempt to reduce time complexity from $O(x^3)$ to $O(x^2)$.
-
-#### 4.3.1 Java Naming Conventions
-
 There are generally three naming conventions, which are known as camelCase, snake_case and PascalCase. You might refer to [This Article](https://www.freecodecamp.org/news/snake-case-vs-camel-case-vs-pascal-case-vs-kebab-case-whats-the-difference/#snake-case) which clearly explains everything you would need for the naming convention.
 
-## 5 - Contact me and my last word
+## 5 - Contact Me
 
 For any questions or clarifications, please contact me, Ng Zhi Yang, via WhatsApp or Telegram at 017-7809298, or by email at 22004833@siswa.um.edu.my. However, WhatsApp and Telegram will always be the preferred choices. If you contact me through email and I don't reply within 24 hours, please feel free to contact me through those messaging apps.
-
-This assignment is aimed at ensuring mastery of core concepts of flow control, File I/O, and especially Object-Oriented Programming. I hope you all will become more familiar with what an algorithm is, what computational thinking is, and certainly, master the concept of Object-Oriented Programming, which is a pillar of most programming in today's world.
-
-Some of your friends might ask whether they should design a Graphical User Interface (GUI) for their assignment. However, it's important to note that there are no marks allocated for creating a GUI in this assignment. The reason for this is that the essence of Fundamentals of Programming (FOP) lies not in spending your time dealing with technologies like JavaFX or Java Swing.
-
-It's perfectly acceptable to harness the capabilities of ChatGPT to assist you while working on your assignments. You may want to explore the use of an embedded database and incorporate SQL syntax in your code to streamline your work. Additionally, always keep modularity in mind and strive to avoid hard-coding. For example, if your project involves extensive dialogues for various conversations, it's advisable to store them in a .txt file rather than embedding them directly in the code. This approach makes modifications and amendments to the text considerably easier.
 
 If you are seeking for the possible input and output, you might watch the following videos on Youtube:
 
